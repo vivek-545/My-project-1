@@ -1,0 +1,27 @@
+import turtle
+import colorsys
+
+# Set up the screen
+screen = turtle.Screen()
+screen.bgcolor("black")
+screen.title("Colorful Spiral")
+
+# Create a turtle
+spiral_turtle = turtle.Turtle()
+spiral_turtle.speed(0)
+spiral_turtle.width(2)
+
+# Number of turns in the spiral
+turns = 100
+
+# Loop to draw the spiral
+for i in range(turns):
+    hue = i / turns
+    r, g, b = colorsys.hsv_to_rgb(hue, 1.0, 1.0)
+    spiral_turtle.color(r, g, b)
+    spiral_turtle.forward(i * 10)
+    spiral_turtle.right(144)
+
+# Hide the turtle and display the result
+spiral_turtle.hideturtle()
+screen.mainloop()
