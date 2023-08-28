@@ -1,0 +1,25 @@
+import turtle
+
+# Set up the screen
+screen = turtle.Screen()
+screen.bgcolor("black")
+screen.title("RGB Color Animation")
+
+# Create a turtle for animation
+animation_turtle = turtle.Turtle()
+animation_turtle.shape("circle")
+animation_turtle.penup()
+animation_turtle.speed(0)
+animation_turtle.goto(-200, 0)
+
+# Animation loop
+for r in range(256):
+    for g in range(256):
+        for b in range(256):
+            color = (r / 255, g / 255, b / 255)  # Convert to RGB values in the range [0, 1]
+            animation_turtle.color(color)
+            animation_turtle.goto(r - 200, g - 128)  # Adjust coordinates for better visualization
+            screen.update()
+
+# Close the animation window on click
+screen.exitonclick()
