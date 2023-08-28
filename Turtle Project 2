@@ -1,0 +1,41 @@
+import turtle
+import random
+
+# Set up the screen
+screen = turtle.Screen()
+screen.bgcolor("white")
+screen.title("Embroidery with Turtle")
+
+# Create a turtle
+embroidery_turtle = turtle.Turtle()
+embroidery_turtle.speed(0)
+embroidery_turtle.pensize(2)
+
+# List of stitch colors
+stitch_colors = ["red", "blue", "green", "purple", "orange", "pink"]
+
+# Function to create a stitch
+def create_stitch():
+    color = random.choice(stitch_colors)
+    stitch_length = random.randint(5, 20)
+    embroidery_turtle.pencolor(color)
+    embroidery_turtle.forward(stitch_length)
+    embroidery_turtle.backward(stitch_length)
+
+# Move the turtle to the starting position
+embroidery_turtle.penup()
+embroidery_turtle.goto(-150, 150)
+embroidery_turtle.pendown()
+
+# Create the embroidery pattern
+for _ in range(100):
+    create_stitch()
+    x = embroidery_turtle.xcor() + random.randint(-20, 20)
+    y = embroidery_turtle.ycor() + random.randint(-20, 20)
+    embroidery_turtle.goto(x, y)
+
+# Hide the turtle
+embroidery_turtle.hideturtle()
+
+# Close the embroidery program on click
+screen.exitonclick()
