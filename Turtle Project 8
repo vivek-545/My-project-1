@@ -1,0 +1,29 @@
+import turtle
+import random
+
+# Set up the screen
+screen = turtle.Screen()
+screen.bgcolor("black")
+screen.title("RGB Color Animation")
+
+# Create a turtle for animation
+animation_turtle = turtle.Turtle()
+animation_turtle.shape("turtle")
+animation_turtle.penup()
+animation_turtle.speed(0)
+animation_turtle.goto(-200, 0)
+
+# Animation loop
+for _ in range(300):
+    r = random.random()  # Generate a random value between 0 and 1 for red
+    g = random.random()  # Generate a random value between 0 and 1 for green
+    b = random.random()  # Generate a random value between 0 and 1 for blue
+    color = (r, g, b)
+    
+    animation_turtle.color(color)
+    animation_turtle.forward(5)
+    animation_turtle.right(30)
+    screen.update()
+
+# Close the animation window on click
+screen.exitonclick()
