@@ -1,0 +1,46 @@
+import turtle
+
+# Set up the screen
+screen = turtle.Screen()
+screen.bgcolor("white")
+screen.title("Turtle Drawing Program")
+
+# Create a turtle
+drawing_turtle = turtle.Turtle()
+drawing_turtle.speed(0)
+drawing_turtle.pensize(2)
+
+# Function to change color
+def change_color():
+    colors = ["red", "orange", "yellow", "green", "blue", "purple"]
+    current_color = drawing_turtle.pencolor()
+    next_color = colors[(colors.index(current_color) + 1) % len(colors)]
+    drawing_turtle.pencolor(next_color)
+
+# Function to increase pen size
+def increase_pen_size():
+    current_size = drawing_turtle.pensize()
+    drawing_turtle.pensize(current_size + 1)
+
+# Function to decrease pen size
+def decrease_pen_size():
+    current_size = drawing_turtle.pensize()
+    if current_size > 1:
+        drawing_turtle.pensize(current_size - 1)
+
+# Function to clear the drawing
+def clear_drawing():
+    drawing_turtle.clear()
+
+# Keyboard bindings
+screen.listen()
+screen.onkeypress(change_color, "c")
+screen.onkeypress(increase_pen_size, "plus")
+screen.onkeypress(decrease_pen_size, "minus")
+screen.onkeypress(clear_drawing, "space")
+
+# Allow user to draw by dragging the turtle
+drawing_turtle.ondrag(drawing_turtle.goto)
+
+# Close the drawing program on click
+screen.exitonclick()
